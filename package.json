@@ -1,0 +1,32 @@
+{
+  "name": "stock-rater",
+  "version": "0.1.0",
+  "description": "Cross-platform desktop app to evaluate stocks/ETFs via metrics and optional AI.",
+  "type": "module",
+  "main": "src/main/index.js",
+  "scripts": {
+    "dev": "electron .",
+    "build": "electron-builder -mwl",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "build": {
+    "appId": "com.example.stockrater",
+    "productName": "StockRater",
+    "files": [
+      "src/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3",
+    "vitest": "^2.0.5"
+  }
+}
