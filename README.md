@@ -8,7 +8,7 @@ Electron 기반 데스크톱 애플리케이션으로, 주식 및 ETF의 다양�
 - 밸류에이션 지표 평가 (PBR, PER, ROE, PSR)
 - 지표별 설명 팝업 제공
 - 로컬 스코어 계산 알고리즘
-- AI 기반 투자 분석 (OpenAI, Anthropic Claude, Google Gemini 지원)
+- AI 기반 투자 분석 (Google Gemini)
 - 평가 결과 팝업 표시
 
 ## 기술 스택
@@ -16,7 +16,7 @@ Electron 기반 데스크톱 애플리케이션으로, 주식 및 ETF의 다양�
 - Electron
 - JavaScript (ES6+)
 - HTML5 / CSS3
-- AI APIs (OpenAI, Anthropic, Google Gemini)
+- Google Gemini API
 
 ## 설치 방법
 
@@ -33,42 +33,12 @@ cd stock_rate
 npm install
 ```
 
-### 3. 환경변수 설정
-
-`.env.example` 파일을 `.env`로 복사하고 API 키를 입력합니다:
-
-```bash
-cp .env.example .env
-```
-
-`.env` 파일을 열어서 사용할 AI 제공업체의 API 키를 설정합니다:
-
-```env
-# OpenAI API Key
-OPENAI_API_KEY=your-openai-api-key-here
-
-# Anthropic (Claude) API Key
-ANTHROPIC_API_KEY=your-anthropic-api-key-here
-
-# Google Gemini API Key
-GEMINI_API_KEY=your-gemini-api-key-here
-
-# 기본 사용할 AI 제공업체 (openai, anthropic, gemini 중 선택)
-DEFAULT_AI_PROVIDER=openai
-```
-
-### API 키 발급 방법
-
-- **OpenAI**: https://platform.openai.com/api-keys
-- **Anthropic (Claude)**: https://console.anthropic.com/
-- **Google Gemini**: https://makersuite.google.com/app/apikey
-
 ## 실행 방법
 
 ### 개발 모드
 
 ```bash
-npm start
+npm run dev
 ```
 
 ### 프로덕션 빌드
@@ -92,14 +62,15 @@ npm run build
 stock-rater/
 ├── src/
 │   ├── main/
-│   │   ├── index.js       # Electron 메인 프로세스
+│   │   ├── index.js       # Electron 메인 프로세스 (Gemini API 포함)
 │   │   └── preload.js     # Preload 스크립트
 │   ├── renderer/
 │   │   ├── index.html     # UI 레이아웃
-│   │   └── renderer.js    # 렌더러 프로세스 로직
+│   │   ├── renderer.js    # 렌더러 프로세스 로직
+│   │   └── assets/
+│   │       └── favicon.svg # 파비콘
 │   └── shared/
 │       └── evaluator.js   # 평가 로직
-├── .env.example           # 환경변수 템플릿
 ├── .gitignore
 ├── package.json
 └── README.md

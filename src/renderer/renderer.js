@@ -61,10 +61,20 @@ $('helpModal').addEventListener('click', (e) => {
 function showToast(message, type = 'loading') {
   const toast = $('toast');
   const toastMessage = $('toastMessage');
+  const toastIcon = $('toastIcon');
 
   toast.className = 'toast';
   toast.classList.add('active', type);
   toastMessage.textContent = message;
+
+  // 아이콘 설정
+  if (type === 'success') {
+    toastIcon.textContent = '✓';
+  } else if (type === 'error') {
+    toastIcon.textContent = '✕';
+  } else if (type === 'loading') {
+    toastIcon.textContent = '...';
+  }
 
   if (type !== 'loading') {
     setTimeout(() => {

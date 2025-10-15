@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>StockRater — 주식/ETF 평가</title>
+    <title>주식 평가 계산기</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -316,15 +317,15 @@
         position: fixed;
         top: 24px;
         right: 24px;
-        background: white;
-        padding: 16px 20px;
-        border-radius: 12px;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        background: #1f2937;
+        padding: 14px 18px;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         display: none;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
         z-index: 999;
-        min-width: 300px;
+        min-width: 280px;
       }
 
       .toast.active {
@@ -334,30 +335,47 @@
 
       @keyframes slideIn {
         from {
-          transform: translateX(400px);
+          transform: translateY(-20px);
           opacity: 0;
         }
         to {
-          transform: translateX(0);
+          transform: translateY(0);
           opacity: 1;
         }
       }
 
-      .toast.success {
-        border-left: 4px solid #10b981;
+      .toast-icon {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-size: 12px;
+        font-weight: bold;
       }
 
-      .toast.error {
-        border-left: 4px solid #ef4444;
+      .toast.success .toast-icon {
+        background: #10b981;
+        color: white;
       }
 
-      .toast.loading {
-        border-left: 4px solid #667eea;
+      .toast.error .toast-icon {
+        background: #ef4444;
+        color: white;
+      }
+
+      .toast.loading .toast-icon {
+        background: #667eea;
+        color: white;
       }
 
       .toast-message {
         flex: 1;
-        color: #374151;
+        color: white;
+        font-size: 14px;
+        font-weight: 500;
       }
 
       .result-modal {
@@ -534,6 +552,7 @@
     </div>
 
     <div class="toast" id="toast">
+      <div class="toast-icon" id="toastIcon"></div>
       <div class="toast-message" id="toastMessage"></div>
     </div>
 
